@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Github</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Github</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.comcss2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img class="profile-avatar" src="https://via.placeholder.com/180x180" alt=".">
-            <h1 class="profile-name" id="profile-name"></h1>
-            <h2 class="profile-username" id="profile-username"></h2>
-            <ul class="numbers">
-                <li class="numbers-item">
-                    <h4>Repositories</h4>
-                    <span id="repositories"></span>
-                </li>
-                <li class="numbers-item">
-                    <h4>Followers</h4>
-                    <span id="followers"></span>
-                </li>
-                <li class="numbers-item">
-                    <h4>Following</h4>
-                    <span id="following"></span>
-                </li>
-            </ul>
-            <a href="#" class="profile-link" id="profile-link">Check on Github</a>
-        </div>
-    </header>
+  <header>
+    <div class="container">
+      <img class="profile-avatar" src="https://via.placeholder.com/180x180" alt=".">
+      <h1 class="profile-name" id="profile-name"></h1>
+      <h2 class="profile-username" id="profile-username"></h2>
+      <ul class="numbers">
+        <li class="numbers-item">
+          <h4>Repositories</h4>
+          <span id="repositories"></span>
+        </li>
+        <li class="numbers-item">
+          <h4>Followers</h4>
+          <span id="followers"></span>
+        </li>
+        <li class="numbers-item">
+          <h4>Following</h4>
+          <span id="following"></span>
+        </li>
+      </ul>
+      <a href="#" class="profile-link" id="profile-link">Check on Github</a>
+    </div>
+  </header>
 
-    <script>
-        // Utilizando a Fetch API para fazer a requisição
-const profileName = document.getElementById('profile-name');
-const profileUsername = document.getElementById('profile-username');
-const repositories = document.getElementById('repositories');
-const followers = document.getElementById('followers');
-const following = document.getElementById('following');
-const profileLink = document.getElementById('profile-link');
-const profileAvatar = document.querySelector('.profile-avatar');
+  <script>
+    // Utilizando a Fetch API para fazer a requisição
+    const profileName = document.getElementById('profile-name');
+    const profileUsername = document.getElementById('profile-username');
+    const repositories = document.getElementById('repositories');
+    const followers = document.getElementById('followers');
+    const following = document.getElementById('following');
+    const profileLink = document.getElementById('profile-link');
+    const profileAvatar = document.querySelector('.profile-avatar');
 
-fetch('https://api.github.com/users/schorchi-GH')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    profileName.textContent = data.name;
-    profileUsername.textContent = '@' + data.login;
-    repositories.textContent = data.public_repos;
-    followers.textContent = data.followers;
-    following.textContent = data.following;
-    profileLink.href = data.html_url;
-    profileLink.textContent = 'Check on Github';
-    profileAvatar.src = data.avatar_url;
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
-    </script>
+    fetch('https://api.github.com/users/schorchi-GH')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        profileName.textContent = data.name;
+        profileUsername.textContent = '@' + data.login;
+        repositories.textContent = data.public_repos;
+        followers.textContent = data.followers;
+        following.textContent = data.following;
+        profileLink.href = data.html_url;
+        profileLink.textContent = 'Check on Github';
+        profileAvatar.src = data.avatar_url;
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  </script>
 </body>
 </html>
