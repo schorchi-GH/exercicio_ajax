@@ -52,6 +52,7 @@
         return response.json();
       })
       .then(data => {
+        try {
         profileName.textContent = data.name;
         profileUsername.textContent = '@' + data.login;
         repositories.textContent = data.public_repos;
@@ -60,7 +61,9 @@
         profileLink.href = data.html_url;
         profileLink.textContent = 'Check on Github';
         profileAvatar.src = data.avatar_url;
-      })
+      }.catch(error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }})
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
